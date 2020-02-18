@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+.header, .footer {
+	width: 80%;
+	padding: 1em;
+	background: #968f8f;
+	color: #f4dee6;
+	font: sans-serif;
+	font-weight: bold;
+}
+
+.main {
+	width: 80%;
+	padding: 1em;
+	min-height: 400px;
+	padding-top: 15px;
+	background: #f4e8f0;
+	color: #968fff;
+}
+
+a, a:hover{
+	cursor: pointer;
+	font-weight:bold;
+	display: inline-block;
+	text-decoration: none;
+	color : white;
+}
+a:link{
+	text-decoration: none;
+	color : white;
+}
+a:visited {
+	color: black;
+	text-decoration: none;
+}
+
+.join{
+	padding:17px;
+}
+
+.login{
+	padding:15px;
+}
+

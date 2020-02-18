@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.project.mb.mapper.member">
+
+	<insert id="member_join" parameterType="com.project.mb.dto.MemberDto">
+		INSERT INTO MEMBER_MB VALUES(#{mId}, #{mPw}, #{mName}, #{mNick})
+	</insert>
+	
+	<select id="select_mId" resultType="com.project.mb.dto.MemberDto">
+		SELECT * FROM MEMBER_MB WHERE MID = #{mId}
+	</select>
+	
+	<select id="select_Login" resultType="com.project.mb.dto.MemberDto">
+		SELECT * FROM MEMBER_MB WHERE MID = #{mId} AND MPW=#{mPw}
+	</select>
+</mapper>
