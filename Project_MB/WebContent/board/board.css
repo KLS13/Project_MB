@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+	table {
+		border-collapse: collapse;
+		width: 600px;
+		margin: auto;
+	}
+
+	td{
+		border: 1px solid black;
+		padding: 5px;
+	}
+	thead td{
+		font-weight: bold;
+		text-align: center;
+	}
+	
+	tfoot {
+		text-align: center;
+	}
+	td:nth-of-type(1) {
+		text-align: center;
+		width: 80px;
+	}
+	td:nth-of-type(2) {
+		width: 240px;
+	}
+	td:nth-of-type(3) {
+		text-align: center;
+		width: 100px;
+	}
+	td:nth-of-type(4) {
+		text-align: center;
+		width: 100px;
+	}
+	td:nth-of-type(5) {
+		text-align: center;
+		width: 80px;
+	}
+	
+	.list_a {
+		color : black !important;
+	}

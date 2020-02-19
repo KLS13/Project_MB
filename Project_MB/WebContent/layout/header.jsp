@@ -23,11 +23,12 @@
 			<a onclick="location.href='/Project_MB/joinPage.me'">회원가입</a> |
 			<a onclick="location.href='/Project_MB/loginPage.me'">로그인</a> |
 			</c:if> 
-			<a onclick="location.href='#'">게시판</a>
+			<a onclick="location.href='/Project_MB/boardList.bo'">게시판</a>
 			<c:if test="${!empty sessionScope.loginDto}">
 			| <a onclick="location.href='/Project_MB/logout.me'">로그아웃</a>
 			<div align="right">
-			${sessionScope.loginDto.mName }님 반갑습니다.
+			${sessionScope.loginDto.mId }님 반갑습니다.
+			<a onclick="location.href='/Project_MB/myPage.me'">[마이페이지]</a>
 			</div>
 			</c:if>
 			</div>

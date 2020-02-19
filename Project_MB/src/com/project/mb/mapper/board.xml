@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.project.mb.mapper.board">
+
+	<select id="select_board_by_map" parameterType="Map" resultType="com.project.mb.dto.BoardDto">
+		SELECT
+			*
+		FROM
+			(SELECT
+				ROWNUM R_NUM, A.*
+			FROM
+				(SELECT * FROM BOARD_MB ORDER BY BREF DESC, BSTEP ASC) A)
+		WHERE
+			R_NUM BETWEEN #{begin} AND #{end}
+	</select>
+	
+	<select id="select_total_record" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			BOARD_MB
+	</select>
+	
+	<insert id="insert_board" parameterType="com.project.mb.dto.BoardDto">
+		INSERT INTO BOARD_MB VALUES
+		(BOARD_SEQ.NEXTVAL, #{mId}, #{bTitle}, #{bContent}, #{bPw}, #{bIp}, 0, SYSDATE, BOARD_SEQ.CURRVAL, 0, 0, 0)
+	</insert>	
+	
+	<select id="select_board_by_bIdx" parameterType="int" resultType="com.project.mb.dto.BoardDto">
+		SELECT * FROM BOARD_MB WHERE BIDX = #{bIdx}
+	</select>
+	
+	<!-- 게시글 삭제 -->
+	<update id="update_board_for_delete" parameterType="com.project.mb.dto.BoardDto">
+		UPDATE
+			BOARD_MB
+		SET
+			BDELETE = #{bDelete},
+			BTITLE = #{bTitle}
+		WHERE 
+			BIDX = #{bIdx}
+	</update>
+	
+	<update id="update_hit" parameterType="int">
+		UPDATE BOARD_MB SET BHIT = BHIT + 1
+		WHERE BIDX = #{bIdx}
+	</update>
+	
+	<insert id="insert_reply" parameterType="com.project.mb.dto.BoardDto">
+		INSERT INTO BOARD_MB VALUES
+		(BOARD_SEQ.NEXTVAL, #{mId}, #{bTitle}, #{bContent}, #{bPw}, #{bIp}, 0, SYSDATE, #{bRef}, #{bStep}, #{bDepth}, 0)
+	</insert>
+	
+	<!-- 새로운 댓글을 다는 경우 -->
+	<!-- 기존의 모든 댓글의 bStep 값을 1씩 증가시켜 준다. -->
+	<update id="update_bStep" parameterType="com.project.mb.dto.BoardDto">
+		UPDATE BOARD_MB SET BSTEP = +1
+		WHERE BREF = #{bRef} AND BDEPTH > 0
+	</update>
+	
+	<!-- 내 게시글만 보기 -->
+	<select id="select_myboard_by_map" parameterType="Map" resultType="com.project.mb.dto.BoardDto">
+		SELECT
+			*
+		FROM
+			(SELECT
+				ROWNUM R_NUM, A.*
+			FROM
+				(SELECT * FROM BOARD_MB WHERE MID = #{mId} ORDER BY BREF DESC, BSTEP DESC) A)
+		WHERE
+			R_NUM BETWEEN #{begin} AND #{end}
+	</select>
+
+	<!-- 내 게시글 개수 구하기 -->
+	<select id="select_my_record" parameterType="String" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			BOARD_MB
+		WHERE
+			MID = #{mId}
+	</select>
+	
+</mapper>

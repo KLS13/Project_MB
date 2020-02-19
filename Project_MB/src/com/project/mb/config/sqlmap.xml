@@ -19,6 +19,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	
 	<mappers>
         <mapper resource="com/project/mb/mapper/member.xml" />
+        <mapper resource="com/project/mb/mapper/board.xml" />
 	</mappers>
 	
 </configuration>

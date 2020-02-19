@@ -16,4 +16,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="select_Login" resultType="com.project.mb.dto.MemberDto">
 		SELECT * FROM MEMBER_MB WHERE MID = #{mId} AND MPW=#{mPw}
 	</select>
+	
+	<update id="update_member" parameterType="String">
+		UPDATE MEMBER_MB SET MNAME=#{mName}, MNICK=#{mNick} WHERE MID=#{mId}
+	</update>
+	
+	<update id="update_mPw" parameterType="String">
+		UPDATE MEMBER_MB SET MPW=#{mPw} WHERE MID=#{mId}
+	</update>
 </mapper>

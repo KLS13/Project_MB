@@ -1,5 +1,7 @@
 package com.project.mb.dao;
 
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -41,6 +43,26 @@ public class MemberDao {
 			MemberDto dto = sqlSession.selectOne("select_Login", mDto);
 			sqlSession.close();
 			return dto;
+		}
+		
+		public int getUpdateMember(MemberDto mDto) {
+			SqlSession sqlSession = factory.openSession(false);
+			int result = sqlSession.update("update_member",mDto);
+			if(result > 0 ) {
+				sqlSession.commit();
+			}
+			sqlSession.close();
+			return result;
+		}	
+		
+		public int getUpdatemPw(Map<String, String> map) {
+			SqlSession sqlSession = factory.openSession(false);
+			int result = sqlSession.update("update_mPw",map);
+			if(result > 0 ) {
+				sqlSession.commit();
+			}
+			sqlSession.close();
+			return result;
 		}
 		
 }
