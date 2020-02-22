@@ -2,12 +2,6 @@
     pageEncoding="UTF-8"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
-<%
-	// 전달 받은 파라미터 처리
-	// searchPwPage.jsp 의 location.href = "/31_mvc_member_board/changePwPage.me?mId=" + $("#mId").val();
-	request.setCharacterEncoding("utf-8");
-%>
 <jsp:include page="/layout/header.jsp"/>
 
 <script type="text/javascript">

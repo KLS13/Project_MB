@@ -29,6 +29,7 @@
 			<div align="right">
 			${sessionScope.loginDto.mId }님 반갑습니다.
 			<a onclick="location.href='/Project_MB/myPage.me'">[마이페이지]</a>
+			<a onclick="location.href='/Project_MB/donation.me'">[후원하기]</a>
 			</div>
 			</c:if>
 			</div>
