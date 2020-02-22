@@ -66,6 +66,10 @@ public class MemberController extends HttpServlet {
 				forward = new ActionForwad();
 				forward.setPath("/member/changePwPage.jsp");
 				break;
+			case "/donation.me":
+				forward = new ActionForwad();
+				forward.setPath("/member/donationPage.jsp");
+				break;
 				
 				//DB
 			case "/login.me":
