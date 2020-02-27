@@ -16,6 +16,7 @@
 </table>
 <br />
 <input type="submit" value="로그인"/>
+<input type="button" value="비밀번호 찾기" onclick="location.href='/Project_MB/searchPwPage.me'">
 
 </form>
 <jsp:include page="/layout/footer.jsp"/>
