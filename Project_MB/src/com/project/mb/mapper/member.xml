@@ -24,4 +24,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="update_mPw" parameterType="String">
 		UPDATE MEMBER_MB SET MPW=#{mPw} WHERE MID=#{mId}
 	</update>
+	
+	<select id="select_by_mId_mNick" parameterType="Map" resultType="com.project.mb.dto.MemberDto">
+			SELECT * FROM MEMBER_MB WHERE MID = #{mId} AND MNICK = #{mNick}	
+	</select>
 </mapper>

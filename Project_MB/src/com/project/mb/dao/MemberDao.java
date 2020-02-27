@@ -65,4 +65,11 @@ public class MemberDao {
 			return result;
 		}
 		
+		public MemberDto getMemberBymIdmNick(Map<String, String> map) {
+			SqlSession sqlSession = factory.openSession();
+			MemberDto dto = sqlSession.selectOne("select_by_mId_mNick", map);
+			sqlSession.close();
+			return dto;
+		}
+		
 }
